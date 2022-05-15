@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 /**
  * Concrete implementation of configuration interface
- *  for reading properties like address of prefixes file
+ * for reading properties like address of prefixes file
  */
 
 public class Configuration implements IConfiguration {

@@ -13,33 +13,33 @@ public class TrieService {
 
     /**
      * Inserting matching characters, one-by-one,
-     * based on input parameter characters sequence in Trie data structure.
+     * based on the input parameter characters sequence into Trie data structure.
      * The longest prefix could be ranges from the first character
      * to the last character length of input parameter and will be find by "findLongestPrefix" method
      *
-     * @param words
+     * @param prefixes
      * @param parameter
      * @return TrieNode data structure
      */
-    public TrieNode insertMatching(List<String> words, String parameter) {
-        //Temporary node which hold the value of current node
+    public TrieNode insertMatching(List<String> prefixes, String parameter) {
+        /**Temporary node which hold the value of current node*/
         TrieNode current = root;
-        current = insertMatchingPrefixInTire(words, parameter, current);
+        current = insertMatchingPrefixInTire(prefixes, parameter, current);
         return current;
     }
 
     /**
      * Iterate String character one by one
      * If there is any character matching insert it into trie
-     * @param words
+     * @param prefixes
      * @param parameter
      * @param current
      * @return inserted matching characters
      */
-    private TrieNode insertMatchingPrefixInTire(List<String> words, String parameter, TrieNode current) {
-     if(!words.isEmpty()){
-         for (int i = 0; i < words.size(); i++) {
-             matchingAndInsert(words, parameter, current, i);
+    private TrieNode insertMatchingPrefixInTire(List<String> prefixes, String parameter, TrieNode current) {
+     if(!prefixes.isEmpty()){
+         for (int i = 0; i < prefixes.size(); i++) {
+             matchingAndInsert(prefixes, parameter, current, i);
              current = root;}
      }
         return current;
@@ -49,16 +49,16 @@ public class TrieService {
      * creating a node for getting the character from map
      * Scanning String chars until there is not matching,
      * then end of matching string in the trie is set and the next string is evaluated
-     * @param words
+     * @param prefixes
      * @param parameter
      * @param current
      * @param i
      * @return
      */
-    private TrieNode matchingAndInsert(List<String> words, String parameter, TrieNode current, int i) {
+    private TrieNode matchingAndInsert(List<String> prefixes, String parameter, TrieNode current, int i) {
 
-        for (int j = 0; j < parameter.length() && j < words.get(i).length(); j++) {
-            char ch = words.get(i).charAt(j);
+        for (int j = 0; j < parameter.length() && j < prefixes.get(i).length(); j++) {
+            char ch = prefixes.get(i).charAt(j);
             TrieNode node = current.children.get(ch);
 
             if (ch != parameter.charAt(j))
@@ -89,7 +89,6 @@ public class TrieService {
     /**
      * Traversing the Trie and find the longest common prefix
      * Looping through the Trie and finding the longest node which does not has any child
-     *
      * @param trieNode
      * @return longest String prefix in trie
      */
@@ -110,7 +109,7 @@ public class TrieService {
         while (curr.children.size() == 1) {
             for (Map.Entry<Character, TrieNode> entry : curr.children.entrySet()) {
                 lcp.append(entry.getKey());
-                // update `curr` pointer to the child node
+                /** update `curr` pointer to the child node*/
                 curr = entry.getValue();
             }
         }

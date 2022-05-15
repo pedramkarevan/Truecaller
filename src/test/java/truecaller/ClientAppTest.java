@@ -18,7 +18,7 @@ class ClientAppTest {
 
     @BeforeEach
     void init() {
-        listOfPrefix = new ArrayList<>(Arrays.asList("true","True", "trueCaller", "truecaller", "truecallerrrrrr", "truecalle"));
+        listOfPrefix = new ArrayList<>(Arrays.asList("true","True", "trueCaller", "truecaller", "truecallerrrrrr", "truecalle","Ped ram"));
         context = new Context();
 
     }
@@ -66,4 +66,10 @@ class ClientAppTest {
         assertEquals(lp,"");
     }
 
+    @Test
+    @DisplayName("MainWithListBySpace")
+    void mainWithListBySpace() throws Exception {
+        String lp =context.findLongestPrefixFromList("Ped ra",listOfPrefix);
+        assertEquals(lp,"Ped ra");
+    }
 }
