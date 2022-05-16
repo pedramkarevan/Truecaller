@@ -23,7 +23,7 @@ Regarding to adding charcter to the Trie and evaluting the matching character, I
 I use this structure to encapsulate the algorithm in a class and configure the <strong>Context</strong> class with an object this class and this is really helpful if we want to extend the solution with many possible variations of an algorithm.</p>
 <p><em><strong>Service Package</strong></em><br>
 <strong>insertMatching</strong> method get list of the prefixes which are matched with the first character of input parameter and will insert only matching characters based on the length of parameter (matching prefix never be longer than the input itself ) and <strong>findLongestPrefix</strong> method get a Trie that is consist of the whole of matching possible words, so the longest would be the answer.</p>
-<p>While we can improve this assignment after another review, I have written the tests, covered the classes and methods with comments, and split more than 4 lines of codes in a method except in some cases for more clarifying.</p>
+
 </div>
 </body>
 
